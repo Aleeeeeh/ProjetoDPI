@@ -1,7 +1,3 @@
-<?php
-  require_once 'classes/usuarios.php';
-  $u = new usuario;
-  ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,12 +21,12 @@
     </header>
     <main class="teste">
         <p id="postsRecentes">Cria seu artigo</p>
-    <form action="" method="POST">
+    <form action="paginaInicial.php" method="POST">
         <div class="formulario">
             <label for="titulo" class="titulos">Titulo:</label>
-            <input type="text" id="titulo" maxlength="110" name="titulo" class="input-padrao" placeholder="Insira um titulo" required>
+            <input type="text" id="titulo" maxlength="100" name="titulo" class="input-padrao" placeholder="Insira um titulo" required>
             <label for="autor" class="titulos">Autor:</label>
-            <input type="text" id="autor" name="autor" class="input-padrao" placeholder="Nome do autor" required>
+            <input type="text" id="autor" maxlength="40" name="autor" class="input-padrao" placeholder="Nome do autor" required>
             
             <label for="categorias" class="titulos">Categorias:</label>
             <label for="radio-tecnologia"><input type="radio" name="categorias" value="tecnologia" id="radio-tecnologia">Tecnologia</label>
@@ -41,22 +37,10 @@
             <label for="radio-esportes"><input type="radio" name="categorias" value="esportes" id="radio-esportes">Esportes</label>
     
             <label for="artigo" class="titulos">Artigo:</label>
-            <textarea name="artigo" id="artigo" cols="70" rows="10" class="input-padrao" placeholder="Digite seu artigo" required></textarea>
-            <input type="submit" value="enviar" class="enviar">
+            <textarea name="artigo" id="artigo" maxlength="600" cols="70" rows="10" class="input-padrao" placeholder="Digite seu artigo" required></textarea>
+            <input type="submit" value="enviar" class="enviar" name="submit">
         </div>
     </form>
-        <?php
-            if(isset($_POST['titulo'])){
-
-                $titulo = addslashes($_POST['titulo']);
-                $autor = addslashes($_POST['autor']);
-                $artigo = addslashes($_POST['artigo']);
-                $u->conectar("login","localhost","root","");
-                $u ->postar($titulo, $autor, $artigo );
-
-            }
-
-        ?>
     </main>
     <footer>
         <div class="conteudo-rodape">

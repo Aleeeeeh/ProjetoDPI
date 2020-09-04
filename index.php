@@ -27,7 +27,7 @@
                   <label>SENHA</label>
                   <input type="password" class="form-control" name="senha" id="CaixaEntrada" placeholder="Informe sua senha" maxlength="32"><br>
                 <button type="submit" class="btn btn-success btn-block ">Entrar</button>
-                <a href="cadastro.php">cadastro</a>
+                <a href="cadastro.php" style="text-decoration:center;">Não possui uma conta? Cadastre-se</a>
               </form>
         </div>
       </div>

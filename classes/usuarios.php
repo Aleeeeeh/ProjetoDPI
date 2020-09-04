@@ -56,14 +56,15 @@ class usuario
         }
     }
 
-            public function postar($titulo,$autor,$artigo){
+            public function postar($titulo,$autor,$categorias,$artigo){
         
             global $poster;
             global $pdo;
 
-            $sql = $pdo->prepare("INSERT INTO categorias(titulo, autor, artigo) VALUES (:t, :a, :r )");
+            $sql = $pdo->prepare("INSERT INTO posts(titulo, autor, categorias, artigo) VALUES (:t, :a, :c, :r )");
             $sql->bindValue(":t",$titulo);
             $sql->bindValue(":a",$autor);
+            $sql->bindValue(":c",$categorias);
             $sql->bindValue(":r",$artigo);
             $sql->execute();
             

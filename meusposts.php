@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Minhas Postagens</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
@@ -20,7 +21,19 @@
         </nav>
     </header>
     <main style="background-color: lightgray;">
-            <p id="postsRecentes">Meus Posts:</p> 
+        <p id="postsRecentes">Meus Posts:</p> 
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+              <div class="card-header" style="text-align: center;font-size: 25px;">Titulo</div>
+              <div class="card-body">
+                <p class="card-title">Autor:</p>
+                <p class="card-text">Categoria:</p>
+                <p class="card-text initialism">Postado em:</p>
+              </div>
+            </div>
+            </div><!-- Fim da div filho -->
     </main>
     <footer>
         <div class="conteudo-rodape">
