@@ -67,8 +67,7 @@ class usuario
             $sql->bindValue(":c",$categorias);
             $sql->bindValue(":r",$artigo);
             $sql->execute();
-            
-                   
+                    
     }
 
 

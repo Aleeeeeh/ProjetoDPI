@@ -20,12 +20,12 @@
           </ul>
         </nav>
     </header>
-    <main style="background-color: lightgray;">
-        <p id="postsRecentes">Meus Posts:</p> 
+    <main style="background-image:url(./img/fundo.jpg);">
+        <p id="postsRecentes" style="color: #fff;">Meus Posts:</p> 
         <div class="container">
           <div class="row">
             <div class="col-md-4">
-              <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+              <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
               <div class="card-header" style="text-align: center;font-size: 25px;">Titulo</div>
               <div class="card-body">
                 <p class="card-title">Autor:</p>

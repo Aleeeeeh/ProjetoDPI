@@ -43,10 +43,8 @@
           $u->conectar("login","localhost","root","");
             if($msgErro == ""){
 
-              if($u->logar($email,$senha)){
-           
+              if($u->logar($email,$senha)){           
                 header("location: paginaInicial.php");
-    
               }
               else{
                 ?>

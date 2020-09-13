@@ -44,20 +44,24 @@
     </header>
     <main><!-- PENDENTE: Deixar 3 cards em uma linha e fazer a página de artigos -->
       <img src="img/hw.jpg" alt="banner" class="banner">
-      <div style="background-color: lightgray;">
-        <p id="postsRecentes">Post recentes:</p>
+      <div style="background-image:url(./img/fundo.jpg);">
+      <div class="mr-5 mt-3 float-right">
+        <label for="filtro" style="color: #fff;">Categoria:</label>
+        <input type="text" name="filtro" id="filtro" placeholder="Buscar">
+        </div>
+        <p id="postsRecentes" style="color: #fff;">Post recentes:</p>
         <!-- Exibindo dados na tela inicial -->
         <?php while($row_post = $result_post->fetch(PDO::FETCH_ASSOC)){?>
         <div class="container">
           <div class="row">
-            <div class="col-md-4">
-              <div class="card text-white bg-info mb-4" style="max-width: 25rem;">
+            <div class="col-sm">
+              <div class="card text-white bg-dark mb-4" style="max-width: 70rem;">
               <div class="card-header" style="text-align: center;font-size: 25px;"><?php echo $row_post['titulo'];?></div>
               <div class="card-body">
                 <p class="card-title">Autor: <?php echo $row_post['autor'];?></p>
                 <p class="card-text">Categoria: <?php echo $row_post['categorias'];?></p>
                 <p class="card-text initialism">Postado em:</p>
-                <button type="button" class="btn btn-success float-right"><a href="artigo.php" style="color: white;">Leia Mais</a></button>
+                <button type="button" class="btn btn-success float-right"><a href="artigo.php" style="color: white;text-decoration:none;">Leia Mais</a></button>
               </div>
             </div>
             </div><!-- Fim da div filho -->
