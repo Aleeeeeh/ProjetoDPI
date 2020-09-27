@@ -94,8 +94,6 @@ else
     <?php    
   }
 }
-
 ?>
-    
   </body>
 </html>

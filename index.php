@@ -1,7 +1,3 @@
-<?php
-  require_once 'classes/usuarios.php';
-  $u = new usuario;
-  ?>
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -18,7 +14,7 @@
     <div class="card" id="TelaLogin">
       
         <div class="card-body">
-            <form method="POST">
+            <form method="POST" action="login.php">
                 <div class="form-group">
                   <label>LOGIN</label>
                   <input type="email"class="form-control" name="email" id="CaixaEntrada" aria-describedby="emailHelp" placeholder="Informe seu login">
@@ -31,44 +27,6 @@
               </form>
         </div>
       </div>
-
-      <?php
-      if(isset($_POST['email'])){
-
-        $email = addslashes($_POST['email']);
-        $senha = addslashes($_POST['senha']);
-       
-        if(!empty($email) && !empty($senha)){
-
-          $u->conectar("login","localhost","root","");
-            if($msgErro == ""){
-
-              if($u->logar($email,$senha)){           
-                header("location: paginaInicial.php");
-              }
-              else{
-                ?>
-                <div class="alert alert-danger" role="alert">
-                   Email ou senha incorretos !
-               </div>
-               <?php
-              } 
-
-            }else{
-              echo "erro banco de dados";
-           }
-        }
-        else
-      {
-        ?>
-        <div class="alert alert-danger" role="alert">
-           Preencha todos os campos! !
-       </div>
-       <?php
-      }  
-      }
-      
-      ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
