@@ -27,7 +27,7 @@
    $u ->postar($titulo, $autor, $categorias, $artigo, $data);
 
 }
- /* ESTÁ CADASTRANDO APENAS COM ID 1, VERIFICAR O SELECT DO LOGIN.PHP E COLOCAR PARA PEGAR O ID DE CADA USUARIO */
+
  $result_post = "SELECT * FROM posts WHERE usuario_id = ".$_SESSION["usuario"][0];
 
  $result_post = $pdo->prepare($result_post);
