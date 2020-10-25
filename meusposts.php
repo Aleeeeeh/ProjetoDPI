@@ -1,13 +1,40 @@
-<!--Autenticação -->
 <?php
+      include_once("conexao.php");
+
     session_start();
 
     if(isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])){
-      $nome = $_SESSION["usuario"][0];
+     echo $id_usuario = $_SESSION["usuario"][0];
     }else{
         header('Location: index.php');
     }
 ?>
+
+<?php
+ require_once 'classes/usuarios.php';
+ $u = new usuario;
+ $u->conectar("login","localhost","root","");
+
+ if(isset($_POST['titulo'])){
+
+   $titulo = addslashes($_POST['titulo']);
+   $autor = addslashes($_POST['autor']);
+   $categorias = addslashes($_POST['categorias']);
+   $artigo = addslashes($_POST['artigo']);
+   date_default_timezone_set('America/Sao_Paulo');
+   $data = date('d/m/Y \à\s H:i:s');
+   $u->conectar("login","localhost","root","");
+   $u ->postar($titulo, $autor, $categorias, $artigo, $data);
+
+}
+ /* ESTÁ CADASTRANDO APENAS COM ID 1, VERIFICAR O SELECT DO LOGIN.PHP E COLOCAR PARA PEGAR O ID DE CADA USUARIO */
+ $result_post = "SELECT * FROM posts WHERE usuario_id = ".$_SESSION["usuario"][0];
+
+ $result_post = $pdo->prepare($result_post);
+ $result_post->execute();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,16 +61,21 @@
         <p id="postsRecentes" style="color: #fff;">Meus Posts:</p> 
         <div class="container">
           <div class="row">
+          <?php while($row_post = $result_post->fetch(PDO::FETCH_ASSOC)){?>
             <div class="col-md-4">
               <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-              <div class="card-header" style="text-align: center;font-size: 25px;">Titulo</div>
-              <div class="card-body">
-                <p class="card-title">Autor:</p>
-                <p class="card-text">Categoria:</p>
-                <p class="card-text initialism">Postado em:</p>
+                <div class="card-header" style="text-align: center;font-size: 25px;">Titulo: <?php echo $row_post['titulo']; ?></div>
+                  <div class="card-body">
+                    <p class="card-title">Autor: <?php echo $row_post['autor']; ?></p>
+                    <p class="card-text">Categoria: <?php echo $row_post['categorias']; ?></p>
+                    <p class="card-text initialism">Postado em: <?php echo $row_post['data']; ?></p>
+                    <button type="button" class="btn btn-success float-right"><a href="artigo.php" style="color: white;text-decoration:none;">Leia Mais</a></button>
+                  </div>
               </div>
-            </div>
             </div><!-- Fim da div filho -->
+          <?php } ?>
+          </div>
+        </div>
     </main>
     <footer>
         <div class="conteudo-rodape">

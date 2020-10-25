@@ -11,7 +11,6 @@
     $artigo = addslashes($_POST['artigo']);
     date_default_timezone_set('America/Sao_Paulo');
     $data = date('d/m/Y \à\s H:i:s');
-    $u->conectar("login","localhost","root","");
     $u ->postar($titulo, $autor, $categorias, $artigo, $data);
 
 }
@@ -22,16 +21,7 @@
   $result_post->execute();
 
 ?>
-<!--Autenticação(login.php) -->
-<?php
-    session_start();
 
-    if(isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])){
-      $nome = $_SESSION["usuario"][0];
-    }else{
-        header('Location: index.php');
-    }
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -59,37 +49,37 @@
       <div style="background-image:url(./img/fundo.jpg);">
       <form action="paginaInicial.php" method="post" class="form-inline float-right mr-4 mt-3">
             <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="busca" placeholder="Pesquisar categoria">
+              <input type="text" class="form-control" name="busca" placeholder="Pesquisar categoria">
             </div>
           <button type="submit" class="btn btn-primary mb-2">Buscar</button>
         </form>
         <p id="postsRecentes" style="color: #fff;">Post recentes:</p>
         <!-- Exibindo dados na tela inicial -->
-      <div class="container">
-      <div class="row">
-        <?php while($row_post = $result_post->fetch(PDO::FETCH_ASSOC)){?>
-            <div class="col-sm-4">
-              <div class="card text-white bg-dark mb-4" style="max-width: 70rem;">
-                <div class="card-header" style="text-align: center;font-size: 25px;"><?php echo $row_post['titulo'];?></div>
-                <div class="card-body">
-                  <p class="card-title">Autor: <?php echo $row_post['autor'];?></p>
-                  <p class="card-text">Categoria: <?php echo $row_post['categorias'];?></p>
-                  <p class="card-text initialism">Postado em: <?php echo $row_post['data'];?></p>
-                <button type="button" class="btn btn-success float-right"><a href="artigo.php" style="color: white;text-decoration:none;">Leia Mais</a></button>
-              </div>
-            </div>
-          </div><!-- Fim da div filho -->
-        <?php } ?>
-      </div>
-    </div>
+        <div class="container">
+          <div class="row">
+            <?php while($row_post = $result_post->fetch(PDO::FETCH_ASSOC)){?>
+                <div class="col-sm-4">
+                  <div class="card text-white bg-dark mb-4" style="max-width: 70rem;">
+                    <div class="card-header" style="text-align: center;font-size: 25px;"><?php echo $row_post['titulo'];?></div>
+                    <div class="card-body">
+                      <p class="card-title">Autor: <?php echo $row_post['autor'];?></p>
+                      <p class="card-text">Categoria: <?php echo $row_post['categorias'];?></p>
+                      <p class="card-text initialism">Postado em: <?php echo $row_post['data'];?></p>
+                    <button type="button" class="btn btn-success float-right"><a href="artigo.php" style="color: white;text-decoration:none;">Leia Mais</a></button>
+                  </div>
+                </div>
+              </div><!-- Fim da div filho -->
+            <?php } ?>
+          </div>
+        </div>
       </div>
     </main>
-    <footer>
-        <div class="conteudo-rodape">
-            <img src="img/footer.png" alt="footer"> <br>
-            <p style="color: #fff;">Todos os direitos reservados</p> 
-            <p style="color: #fff;">© Copyright</p>
-        </div>
-    </footer>
+  <footer>
+    <div class="conteudo-rodape">
+        <img src="img/footer.png" alt="footer"> <br>
+        <p style="color: #fff;">Todos os direitos reservados</p> 
+        <p style="color: #fff;">© Copyright</p>
+    </div>
+  </footer>
 </body>
 </html>

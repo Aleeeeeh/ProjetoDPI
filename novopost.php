@@ -3,10 +3,11 @@
     session_start();
 
     if(isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])){
-      $nome = $_SESSION["usuario"][0];
+         $id_usuario = $_SESSION["usuario"][0];
     }else{
         header('Location: index.php');
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

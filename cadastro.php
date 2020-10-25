@@ -41,6 +41,7 @@
                   <input type="password" class="form-control" name="confirmasenha" id="CaixaEntrada" placeholder="Digite sua senha" maxlength="32" maxlength="32"><br>
                 <button type="submit" class="btn btn-success btn-block ">Cadastrar</button> 
               </form>
+             <a href="index.php" class="mt-3">Ir para login</a>
         </div>
       </div>
 <?php
