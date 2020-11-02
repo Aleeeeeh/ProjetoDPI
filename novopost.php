@@ -46,7 +46,7 @@
             <label for="radio-esportes"><input type="radio" name="categorias" value="esportes" id="radio-esportes">Esportes</label>
     
             <label for="artigo" class="titulos">Artigo:</label>
-            <textarea name="artigo" id="artigo" maxlength="600" cols="70" rows="10" class="input-padrao" placeholder="Digite seu artigo" required></textarea>
+            <textarea name="artigo" id="artigo" maxlength="100000" cols="70" rows="10" class="input-padrao" placeholder="Digite seu artigo" required></textarea>
             <input type="submit" value="enviar" class="enviar" name="submit">
         </div>
     </form>

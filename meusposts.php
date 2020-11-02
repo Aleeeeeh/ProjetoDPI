@@ -4,7 +4,7 @@
     session_start();
 
     if(isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])){
-     echo $id_usuario = $_SESSION["usuario"][0];
+      $id_usuario = $_SESSION["usuario"][0];
     }else{
         header('Location: index.php');
     }
@@ -64,12 +64,14 @@
           <?php while($row_post = $result_post->fetch(PDO::FETCH_ASSOC)){?>
             <div class="col-md-4">
               <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-                <div class="card-header" style="text-align: center;font-size: 25px;">Titulo: <?php echo $row_post['titulo']; ?></div>
+                <div class="card-header" style="text-align: center;font-size: 25px;"><?php echo $row_post['titulo']; ?></div>
                   <div class="card-body">
                     <p class="card-title">Autor: <?php echo $row_post['autor']; ?></p>
                     <p class="card-text">Categoria: <?php echo $row_post['categorias']; ?></p>
                     <p class="card-text initialism">Postado em: <?php echo $row_post['data']; ?></p>
                     <button type="button" class="btn btn-success float-right"><a href="artigo.php" style="color: white;text-decoration:none;">Leia Mais</a></button>
+                    <a type="button" class="btn btn-danger" href="<?php echo "excluirPost.php?id_post={$row_post['id_post']}"; ?>">Deletar</a>
+                    <button type="button" class="btn btn-primary">Editar</button>
                   </div>
               </div>
             </div><!-- Fim da div filho -->
@@ -85,4 +87,5 @@
         </div>
     </footer>
 </body>
+<script src="javascript/index.js"></script>
 </html>

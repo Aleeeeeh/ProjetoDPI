@@ -65,7 +65,7 @@
                       <p class="card-title">Autor: <?php echo $row_post['autor'];?></p>
                       <p class="card-text">Categoria: <?php echo $row_post['categorias'];?></p>
                       <p class="card-text initialism">Postado em: <?php echo $row_post['data'];?></p>
-                    <button type="button" class="btn btn-success float-right"><a href="artigo.php" style="color: white;text-decoration:none;">Leia Mais</a></button>
+                    <button type="button" class="btn btn-success float-right"><a style="color: white;text-decoration:none;" href="<?php echo "artigo.php?id_post={$row_post['id_post']}"; ?>">Leia Mais</a></button>
                   </div>
                 </div>
               </div><!-- Fim da div filho -->
@@ -81,5 +81,6 @@
         <p style="color: #fff;">© Copyright</p>
     </div>
   </footer>
-</body>
+</body><!-- CRIAR A FUNÇÃO PARA QUE EXIBA O ARTIGO COMPLETO EM UMA PÁGINA -->
+<script src="javascript/index.js"></script>
 </html>

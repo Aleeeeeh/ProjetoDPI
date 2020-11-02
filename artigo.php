@@ -4,8 +4,8 @@
     $u->conectar("login","localhost","root","");
     
     session_start();
-
-     $result_post = "SELECT * FROM posts";
+    $id = filter_input(INPUT_GET, 'id_post', FILTER_SANITIZE_SPECIAL_CHARS);
+     $result_post = "SELECT * FROM posts WHERE id_post='$id'";
     //Pegar pelo id_post 
      $result_post = $pdo->prepare($result_post);
      $result_post->execute();
