@@ -69,9 +69,9 @@
                     <p class="card-title">Autor: <?php echo $row_post['autor']; ?></p>
                     <p class="card-text">Categoria: <?php echo $row_post['categorias']; ?></p>
                     <p class="card-text initialism">Postado em: <?php echo $row_post['data']; ?></p>
-                    <button type="button" class="btn btn-success float-right"><a href="artigo.php" style="color: white;text-decoration:none;">Leia Mais</a></button>
+                    <button type="button" class="btn btn-success float-right"><a href="<?php echo "artigo.php?id_post={$row_post['id_post']}"; ?>" style="color: white;text-decoration:none;">Leia Mais</a></button>
                     <a type="button" class="btn btn-danger" href="<?php echo "excluirPost.php?id_post={$row_post['id_post']}"; ?>">Deletar</a>
-                    <button type="button" class="btn btn-primary">Editar</button>
+                    <a type="button" class="btn btn-primary" href="<?php echo "editaPost.php?id_post={$row_post['id_post']}"; ?>">Editar</a>
                   </div>
               </div>
             </div><!-- Fim da div filho -->
