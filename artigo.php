@@ -23,6 +23,9 @@
 </head>
 <body>
 <header>
+    <?php
+      if(isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])){
+    ?>
         <a href="paginaInicial.php"><img src="img/logo.png" alt="Logo" class="logo"></a> 
         <nav>
           <ul>
@@ -31,6 +34,19 @@
               <li><a href="sair.php">Sair</a></li>
           </ul>
         </nav>
+        <?php
+      }else{
+        ?>
+        <a href="pageVisita.php"><img src="img/logo.png" alt="Logo" class="logo"></a>
+        <nav>
+          <ul>
+              <li class="text-white">Ainda não possui uma conta ?</li>
+              <li><a href="cadastro.php">Cadastre-se</a></li>
+          </ul>
+        </nav>
+      <?php
+      }
+      ?>
     </header>
     <div class="container">
         <?php while($row_post = $result_post->fetch(PDO::FETCH_ASSOC)){?>

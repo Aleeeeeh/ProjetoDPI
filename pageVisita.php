@@ -1,9 +1,8 @@
-  <?php
+<?php
   require_once 'classes/usuarios.php';
   $u = new usuario;
   $u->conectar("login","localhost","root","");
 
-  
   if(isset($_POST['titulo'])){
 
     $titulo = addslashes($_POST['titulo']);
@@ -15,10 +14,11 @@
     $u ->postar($titulo, $autor, $categorias, $artigo, $data);
 
 }
-  $pesquisa =FILTER_INPUT(INPUT_GET,'pesquisa',FILTER_SANITIZE_STRING);
+
+  $pesquisa = FILTER_INPUT(INPUT_GET,'pesquisa',FILTER_SANITIZE_STRING);
+  
   if($pesquisa){
-    $result_post = "SELECT * FROM posts WHERE categorias='".$pesquisa."'";
-    echo '<div class="alert-success">Busca realizada com sucesso !</div>';
+    $result_post = "SELECT * FROM posts WHERE categorias= ".$pesquisa;
   }else{
     $result_post = "SELECT * FROM posts";
   }
@@ -41,7 +41,7 @@
 </head>
 <body>
     <header>
-    <?php
+    <?php //SE EXISTE USUARIO NA SESSAO LOGO REDIRECIONA COM AS OPÇÕES NO NAV SENÃO COM CADASTRE-SE NO NAV
       if(isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])){
     ?>
         <a href="paginaInicial.php"><img src="img/logo.png" alt="Logo" class="logo"></a> 
@@ -54,9 +54,8 @@
       ?>
         <nav>
           <ul>
-              <li><a href="meusposts.php">Minhas Postagens</a></li>
-              <li><a href="novopost.php">Novo Post</a></li>
-              <li><a href="sair.php">Sair</a></li>
+              <li class="text-white">Ainda não possui uma conta ?</li>
+              <li><a href="cadastro.php">Cadastre-se</a></li>
           </ul>
         </nav>
     </header>
