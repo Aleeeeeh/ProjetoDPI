@@ -31,7 +31,7 @@
           <ul>
               <li><a href="meusposts.php">Minhas Postagens</a></li>
               <li><a href="novopost.php">Novo Post</a></li>
-              <li><a href="sair.php">Sair</a></li>
+              <li><a href="sair.php" onclick="return confirm('Deseja mesmo sair ?')">Sair</a></li>
           </ul>
         </nav>
         <?php

@@ -1,4 +1,16 @@
   <?php
+  //VERIFICA SE USUÁRIO ESTA LOGADO NA SESSÃO
+  include_once("conexao.php");
+
+  session_start();
+
+    if(isset($_SESSION["usuario"]) && is_array($_SESSION["usuario"])){
+      $id_usuario = $_SESSION["usuario"][0];
+    }else{
+        header('Location: index.php');
+    }
+  ?>
+  <?php
   require_once 'classes/usuarios.php';
   $u = new usuario;
   $u->conectar("login","localhost","root","");
@@ -20,7 +32,7 @@
     $result_post = "SELECT * FROM posts WHERE categorias='".$pesquisa."'";
     echo '<div class="alert-success">Busca realizada com sucesso !</div>';
   }else{
-    $result_post = "SELECT * FROM posts";
+    $result_post = "SELECT * FROM posts ORDER BY id_post DESC";
   }
 
   $result_post = $pdo->prepare($result_post);
@@ -56,7 +68,7 @@
           <ul>
               <li><a href="meusposts.php">Minhas Postagens</a></li>
               <li><a href="novopost.php">Novo Post</a></li>
-              <li><a href="sair.php">Sair</a></li>
+              <li><a href="sair.php" onclick="return confirm('Deseja mesmo sair ?')">Sair</a></li>
           </ul>
         </nav>
     </header>

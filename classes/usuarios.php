@@ -61,7 +61,6 @@ class usuario
             global $poster;
             global $pdo;
             
-            session_start();
             $id_usuario = $_SESSION["usuario" ][0];
            
             $sql = $pdo->prepare("INSERT INTO posts(titulo, autor, categorias, artigo, data, usuario_id) VALUES (:t, :a, :c, :r, :d, :u)");

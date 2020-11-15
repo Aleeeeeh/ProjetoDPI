@@ -28,7 +28,7 @@
 
 }
 
- $result_post = "SELECT * FROM posts WHERE usuario_id = ".$_SESSION["usuario"][0];
+ $result_post = "SELECT * FROM posts WHERE usuario_id = ".$_SESSION["usuario"][0]." ORDER BY id_post DESC";
 
  $result_post = $pdo->prepare($result_post);
  $result_post->execute();
@@ -53,7 +53,7 @@
           <ul>
               <li><a href="meusposts.php">Minhas Postagens</a></li>
               <li><a href="novopost.php">Novo Post</a></li>
-              <li><a href="sair.php">Sair</a></li>
+              <li><a href="sair.php" onclick="return confirm('Deseja mesmo sair ?')">Sair</a></li>
           </ul>
         </nav>
     </header>
@@ -70,7 +70,7 @@
                     <p class="card-text">Categoria: <?php echo $row_post['categorias']; ?></p>
                     <p class="card-text initialism">Postado em: <?php echo $row_post['data']; ?></p>
                     <button type="button" class="btn btn-success float-right"><a href="<?php echo "artigo.php?id_post={$row_post['id_post']}"; ?>" style="color: white;text-decoration:none;">Leia Mais</a></button>
-                    <a type="button" class="btn btn-danger" href="<?php echo "excluirPost.php?id_post={$row_post['id_post']}"; ?>">Deletar</a>
+                    <a type="button" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir o artigo ?')" href="<?php echo "excluirPost.php?id_post={$row_post['id_post']}"; ?>">Deletar</a>
                     <a type="button" class="btn btn-primary" href="<?php echo "editaPost.php?id_post={$row_post['id_post']}"; ?>">Editar</a>
                   </div>
               </div>
